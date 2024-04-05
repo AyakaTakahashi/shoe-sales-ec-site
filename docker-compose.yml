@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  php:
+    platform: linux/amd64
+    build: ./docker/php
+    volumes:
+      - ./src:/var/www
+    container_name: "php"
+
+  nginx:
+    image: nginx
+    container_name: "nginx"
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
+  db:
+    image: mysql:5.7
+    container_name: "db"
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shoe_sales_ec_site
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    platform: linux/amd64
+    container_name: "phpmyadmin"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=admin
+      - PMA_PASSWORD=secret
+    links:
+      - db
+    ports:
+      - 8080:80
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
+
+  node:
+    image: node:16.16.0
+    container_name: "node"
+    tty: true
+    volumes:
+      - ./src:/var/www
+    working_dir: /var/www
