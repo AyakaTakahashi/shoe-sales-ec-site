@@ -128,3 +128,7 @@ label {
     letter-spacing: normal;
     color: #191919;
 }
+
+.ec-site-required {
+    color: red;
+}

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,16 @@ use App\Http\Controllers\ReviewController;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
-Route::get('products/{product}/favorite', [ProductController::class, 'favorite'])->name('products.favorite');
-
-Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
 Auth::routes(['verify' => true]);
+
+//for product
+Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
+Route::post('/favorite/{product}', [ProductController::class, 'favoriteProductsToggle'])->name('products.favorite');
+
+//for user
+Route::get('users', [UserController::class, 'index'])->name('users.index');
+Route::get('users/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('users/update', [UserController::class, 'update'])->name('users.update');
+Route::get('users/password', [UserController::class, 'showPasswordUpdate'])->name('users.show_password_update');
+Route::put('users/password', [UserController::class, 'updatePassword'])->name('users.update_password');

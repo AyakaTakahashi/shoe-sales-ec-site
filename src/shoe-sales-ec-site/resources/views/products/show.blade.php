@@ -1,5 +1,5 @@
 @extends('layouts.app')
- 
+
 @section('content')
 
 <div class="d-flex justify-content-center">
@@ -12,13 +12,14 @@
                 <h1 class="">{{$product->name}}</h1>
                 <p class="">{{$product->description}}</p>
                 <hr>
-                    <p class="d-flex align-items-end">
+                <p class="d-flex align-items-end">
                     ￥{{$product->price}}(税込)
                 </p>
                 <hr>
             </div>
             @auth
-            <form method="POST" class="m-3 align-items-end">
+            <div class="m-3 align-items-end">
+                <!-- <form class="m-3 align-items-end"> -->
                 <input type="hidden" name="id" value="{{$product->id}}">
                 <input type="hidden" name="name" value="{{$product->name}}">
                 <input type="hidden" name="price" value="{{$product->price}}">
@@ -27,15 +28,31 @@
                         <label for="quantity" class="col-form-label">数量</label>
                         <input type="number" id="quantity" name="qty" min="1" value="1" class="form-control">
                     </div>
-                    <div class="col-12 col-md-auto">
-                        <button type="submit" class="btn btn-primary w-100" style="margin-top: 32px;">
+                    <div class="col-12 col-md-auto d-flex align-items-center" style="margin-top: 32px;">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-shopping-cart"></i>
                             カートに追加
                         </button>
+
+                        @auth
+                        <form method="POST" action="{{ route('products.favorite', $product->id) }}">
+                            @csrf
+                            <!-- お気に入り登録されているかをチェック -->
+                            @if($product->isFavoritedByAuthUser())
+                            <button type="submit" class="btn btn-danger ms-1">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            @else
+                            <button type="submit" class="btn border-danger ms-1">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            @endif
+                        </form>
+                        @endauth
                     </div>
                 </div>
                 <input type="hidden" name="weight" value="0">
-            </form>
+            </div>
             @endauth
         </div>
         <div class="offset-1 col-11">
@@ -59,11 +76,11 @@
                         @csrf
                         <h4>レビュー内容</h4>
                         @error('content')
-                             <strong>レビュー内容を入力してください</strong>
-                         @enderror
-                         <textarea name="content" class="form-control m-2"></textarea>
-                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                         <button type="submit" class="btn btn btn-success">レビューを追加</button>
+                        <strong>レビュー内容を入力してください</strong>
+                        @enderror
+                        <textarea name="content" class="form-control m-2"></textarea>
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <button type="submit" class="btn btn btn-success">レビューを追加</button>
                     </form>
                 </div>
             </div>

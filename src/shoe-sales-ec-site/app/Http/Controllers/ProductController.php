@@ -17,11 +17,11 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->category !== null){
+        if ($request->category !== null) {
             $products = Product::where('category_id', $request->category)->sortable()->paginate(15);
             $total_count = Product::where('category_id', $request->category)->count();
             $category = Category::find($request->category);
-        }else{
+        } else {
             $products = Product::sortable()->paginate(15);
             $total_count = '';
             $category = null;
@@ -113,5 +113,20 @@ class ProductController extends Controller
     {
         $product->delete();
         return to_route('products.index');
+    }
+
+    //お気に入り登録ボタン押下時の処理
+    //お気に入り登録済みの商品の場合はお気に入り解除し、お気に入り未登録の場合はお気に入りに登録する
+    public function favoriteProductsToggle(Request $request, Product $product)
+    {
+        $user = $request->user();
+
+        if ($user->favoriteProducts()->where('product_id', $product->id)->exists()) {
+            $user->favoriteProducts()->detach($product);
+        } else {
+            $user->favoriteProducts()->attach($product);
+        }
+
+        return back();
     }
 }

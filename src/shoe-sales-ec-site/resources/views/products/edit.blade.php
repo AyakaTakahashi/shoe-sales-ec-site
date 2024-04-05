@@ -1,5 +1,5 @@
 @extends('layouts.app')
- 
+
 @section('content')
 <div class="container">
     <h1>商品情報 更新</h1>
@@ -22,11 +22,11 @@
             <label for="product-category">カテゴリー</label>
             <select name="category_id" class="form-control" id="product-category">
                 @foreach ($categories as $category)
-                    @if($category->id == $product->category_id)
-                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                    @else
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endif
+                @if($category->id == $product->category_id)
+                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                @else
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endif
                 @endforeach
             </select>
         </div>
@@ -35,42 +35,3 @@
     <a href="{{ route('products.index') }}">商品一覧に戻る</a>
 </div>
 @endsection
-
-
-{{-- <div>
-    <a href="{{ route('products.index') }}"> Back</a>
-</div>
-
-<form action="{{ route('products.update',$product->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-
-    <div>
-        <strong>Name:</strong>
-        <input type="text" name="name" value="{{ $product->name }}" placeholder="Name">
-    </div>
-    <div>
-        <strong>Description:</strong>
-        <textarea style="height:150px" name="description" placeholder="description">{{ $product->description }}</textarea>
-    </div>
-    <div>
-        <strong>Price:</strong>
-        <input type="number" name="price"  value="{{ $product->price }}">
-    </div>
-    <div>
-        <strong>Category:</strong>
-        <select name="category_id">
-        @foreach ($categories as $category)
-            @if ($category->id == $product->category_id)
-                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-            @else
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endif
-        @endforeach
-        </select>
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-
-</form> --}}

@@ -1,5 +1,5 @@
 # Shoe Sales EC Site
-Welcome to the Shoe Sales EC Site, an e-commerce platform dedicated exclusively to the sale of shoes. Our platform offers a seamless shopping experience for customers looking to purchase their next pair of shoes, as well as comprehensive management tools for administrators.
+Welcome to the Shoe Sales EC Site(this is not a official site, just a traininig site that author made), an e-commerce platform dedicated exclusively to the sale of shoes. 
 
 ## Technology
 - PHP laravel
