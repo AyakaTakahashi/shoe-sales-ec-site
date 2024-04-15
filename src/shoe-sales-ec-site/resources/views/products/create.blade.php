@@ -4,7 +4,7 @@
 <div class="container">
     <h1>新しい商品を追加</h1>
 
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="product-name">商品名</label>
@@ -22,9 +22,12 @@
             <label for="product-category">カテゴリー</label>
             <select name="category_id" class="form-control" id="product-category">
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group mt-2">
+            <input type="file" name="image">
         </div>
         <button type="submit" class="btn btn-success mt-2">商品を登録</button>
     </form>

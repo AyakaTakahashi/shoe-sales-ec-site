@@ -6,7 +6,6 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Review;
-use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -51,11 +50,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $dir = 'img';
+        $file_name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/' . $dir, $file_name);
+
         $product = new Product();
         $product->name = $request->input('name');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->input('category_id');
+        $product->path = 'storage/' . $dir . '/' . $file_name;
         $product->save();
 
         return to_route('products.index');
@@ -94,10 +98,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $dir = 'img';
+        $file_name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/' . $dir, $file_name);
+
         $product->name = $request->input('name');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->input('category_id');
+        $product->path = 'storage/' . $dir . '/' . $file_name;
         $product->update();
 
         return to_route('products.index');

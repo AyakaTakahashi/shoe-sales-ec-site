@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
-                    <a href="{{ route('users.edit') }}">
+                    <a href="{{ route('users.order_history') }}">
                         <i class="fas fa-chevron-right fa-2x"></i>
                     </a>
                 </div>
@@ -97,15 +97,4 @@
         <hr>
     </div>
 </div>
-<script>
-    // このスクリプトはログアウトの機能を模倣します。実際のログアウト処理はサーバー側で行う必要があります。
-    function logout() {
-        // ここで実際のログアウト処理を行う
-        // 例: location.href = 'logout.path';
-        console.log("ログアウト処理をここで実装");
-    }
-</script>
-
-</div>
-
 @endsection

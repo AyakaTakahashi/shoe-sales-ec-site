@@ -30,31 +30,16 @@
                 @enderror
             </div>
             <div class="form-group mt-2">
-                <label for="user-postal_code">郵便番号</label><span class="ec-site-required">*</span>
+                <label for="user-postal_code">郵便番号</label>
                 <input type="text" name="postal_code" id="user-postal_code" class="form-control @error('postal_code') is-invalid @enderror" value="{{ $user->postal_code }}">
-                @error('postal_code')
-                <span class="invalid-feedback" role="alert">
-                    <strong>郵便番号を入力してください</strong>
-                </span>
-                @enderror
             </div>
             <div class="form-group mt-2">
-                <label for="user-address">住所</label><span class="ec-site-required">*</span>
+                <label for="user-address">住所</label>
                 <input type="text" name="address" id="user-address" class="form-control @error('address') is-invalid @enderror" value="{{ $user->address }}">
-                @error('address')
-                <span class="invalid-feedback" role="alert">
-                    <strong>住所を入力してください</strong>
-                </span>
-                @enderror
             </div>
             <div class="form-group mt-2">
-                <label for="user-phone">電話番号</label><span class="ec-site-required">*</span>
+                <label for="user-phone">電話番号</label>
                 <input type="number" name="phone" id="user-phone" class="form-control @error('phone') is-invalid @enderror" value="{{ $user->phone }}">
-                @error('phone')
-                <span class="invalid-feedback" role="alert">
-                    <strong>電話番号を入力してください</strong>
-                </span>
-                @enderror
             </div>
             <button type="submit" class="btn btn-primary mt-2">会員情報を保存する</button>
         </form>

@@ -53,6 +53,16 @@ class User extends Authenticatable
 
     public function favoriteProducts()
     {
-        return $this->belongsToMany(Product::class, 'user_product_favorites')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'user_product_favorites');
+    }
+
+    public function cartInProducts()
+    {
+        return $this->belongsToMany(Product::class, 'shoppingcart')->wherePivot('buy_flag', false);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

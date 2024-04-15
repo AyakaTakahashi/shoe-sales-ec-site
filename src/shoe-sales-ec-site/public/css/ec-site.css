@@ -20,6 +20,10 @@
     font-stretch: normal;
 }
 
+main {
+    background-color: #fff;
+}
+
 h1 {
     font-family: YuGo;
     font-size: 26px;
@@ -91,44 +95,28 @@ label {
     color: #191919;
 }
 
-.ec-site-header-container {
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-}
-
-.ec-site-header-search-input {
-    border: solid 1px #e5e5e5;
-}
-
-.ec-site-header-search-button {
-    background-color: #0fbe9f;
-}
-
-.ec-site-header-search-icon {
-    color: #ffffff;
-}
-
-.ec-site-header-fav-icon {
-    color: #191919;
-}
-
-.ec-site-header-shoppingcart-icon {
-    color: #ffffff;
-}
-
-.ec-site-sidebar-category-label {
-    width: 156px;
-    height: 20px;
-    font-family: YuGo;
-    font-size: 13px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #191919;
-}
-
 .ec-site-required {
     color: red;
+}
+
+#sidebar a {
+    color: rgb(74, 74, 74); 
+    text-decoration: none; 
+    font-weight: 300;
+}
+
+#sidebar a:hover {
+    text-decoration: underline; 
+}
+
+.img-thumbnail {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.img-favorite {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -44,9 +45,6 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'postal_code' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
         ]);
 
         $user = Auth::user();
@@ -73,13 +71,7 @@ class UserController extends Controller
         return view('users.updatePassword', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
+    //パスワード更新
     public function updatePassword(Request $request, User $user)
     {
         $user = Auth::user();
@@ -108,5 +100,29 @@ class UserController extends Controller
 
         // 更新後、ユーザーページへリダイレクト
         return to_route('users.index')->with('success', 'パスワードが正常に更新されました。');
+    }
+
+    //お気に入り一覧表示
+    public function showFavorite(Request $request)
+    {
+        $user = $request->user();
+        $favoriteProducts = $user->favoriteProducts()->get();
+        return view('users.favorite', compact('favoriteProducts'));
+    }
+
+    //注文履歴一覧
+    public function getOrderHistory(Request $request)
+    {
+        $user = $request->user();
+        $orderHistory = $user->orders()->get();
+        return view('users.orderHistory', compact('orderHistory'));
+    }
+
+    //注文履歴詳細
+    public function getOrderHistoryDetail(Request $request)
+    {
+        $order = Order::with(['paymentMethod', 'user'])->findOrFail($request->order_id);
+        $order_details = $order->orderDetails()->with('product')->get();
+        return view('users.orderhistorydetail', compact('order', 'order_details'));
     }
 }

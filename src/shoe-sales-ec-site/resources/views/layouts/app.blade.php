@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,10 +18,13 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/ec-site.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
+
 <body>
     <div id="app">
         {{-- headerコンポーネントの読み込み --}}
@@ -36,4 +40,5 @@
         @endcomponent
     </div>
 </body>
+
 </html>

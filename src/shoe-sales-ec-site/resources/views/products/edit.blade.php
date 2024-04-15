@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>商品情報 更新</h1>
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
+    <form action="{{ route('products.update',$product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -29,6 +29,9 @@
                 @endif
                 @endforeach
             </select>
+        </div>
+        <div class="form-group mt-2">
+            <input type="file" name="image">
         </div>
         <button type="submit" class="btn btn-danger mt-2">更新</button>
     </form>

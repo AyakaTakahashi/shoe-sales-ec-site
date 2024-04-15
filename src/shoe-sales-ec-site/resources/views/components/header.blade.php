@@ -1,15 +1,15 @@
-<nav class="navbar navbar-expand-md navbar-light shadow-sm ec-site-header-container">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+<nav class="navbar navbar-expand-md navbar-light shadow-sm">
+    <div class="container header">
+        <a class="navbar-brand" href="{{ url('/products') }}">
+            {{ config('app.name', 'Shoe selling ec site') }}
         </a>
         <form class="row g-1">
             <div class="col-auto">
-                <input class="form-control ec-site-header-search-input">
+                <input class="form-control">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn ec-site-header-search-button">
-                    <i class="fas fa-search ec-site-header-search-icon"></i>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
                 </button>
             </div>
         </form>
@@ -34,16 +34,24 @@
                 </li>
                 @else
                 <li class="nav-item mr-5">
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    ログアウト
+                    <a class="nav-link" href="{{ route('users.favorite') }}"><i class="far fa-heart"></i></a>
+                </li>
+                <li class="nav-item mr-5">
+                    <a class="nav-link" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+                <li class="nav-item mr-5">
+                    <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i></a>
+                </li>
+                <li class="nav-item mr-5">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
                 </li>
                 @endguest
             </ul>
         </div>
     </div>
 </nav>
-    
