@@ -1,21 +1,26 @@
 # Shoe Sales EC Site
-Welcome to the Shoe Sales EC Site(this is not a official site, just a traininig site that author made), an e-commerce platform dedicated exclusively to the sale of shoes. 
+架空のECサイトを構築しました。
+以下の機能を実装しています。
+
+- 商品
+　- 商品一覧  
+　- 商品詳細(カートイン、お気に入り登録、レビュー投稿)
+- チェックアウト  
+　- カート画面  
+　- 配送先入力画面  
+　- 注文確認モーダル  
+　- 注文確定画面  
+- 会員情報  
+　- 会員情報編集画面  
+　- パスワード変更
+　- 注文履歴
+　- ログアウト
+- お気に入り画面
 
 ## Technology
 - PHP laravel
 - MySQL
 - Docker
-
-## Features
-Our site is designed with both the end-user and administrators in mind, featuring:
-
-- User Authentication: Secure login system for users and administrators.
-- User Registration/Editing: New users can sign up, and existing users can update their details easily.
-- Customer Features:
-  - Product Listings: Browse our extensive catalog of shoes.
-  - Product Details: View detailed information about each product.
-- Administrator Features:
-  - Product Management: Admins can add, edit, and delete product listings to keep the catalog up to date.
 
 ## Directory
 shoe-sales-ec-site
@@ -38,3 +43,4 @@ To get started with our project, follow these steps:
 - Run docker-compose up --build to build and start the Docker containers.
 - Run php artisan migrate:fresh --seed to setup the database
 - Access the frontend at http://localhost
+
