@@ -45,4 +45,6 @@ To get started with our project, follow these steps:
 - Access the frontend at http://localhost
 
 https://github.com/AyakaTakahashi/shoe-sales-ec-site/assets/122336381/f44c3812-c25f-4453-8154-78d9ea8ec42c
+
 https://github.com/AyakaTakahashi/shoe-sales-ec-site/assets/122336381/f821b211-5ed0-4062-bb2a-f8c30a2927c2
+
