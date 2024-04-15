@@ -17,6 +17,13 @@
 　- ログアウト  
 - お気に入り画面  
 
+https://github.com/AyakaTakahashi/shoe-sales-ec-site/assets/122336381/f44c3812-c25f-4453-8154-78d9ea8ec42c
+
+https://github.com/AyakaTakahashi/shoe-sales-ec-site/assets/122336381/f821b211-5ed0-4062-bb2a-f8c30a2927c2
+
+## DB diagram
+![database-layout](https://github.com/AyakaTakahashi/shoe-sales-ec-site/assets/122336381/6da458d6-bdee-427f-8a14-a67e56102084)
+
 ## Technology
 - PHP laravel
 - MySQL
@@ -43,8 +50,3 @@ To get started with our project, follow these steps:
 - Run docker-compose up --build to build and start the Docker containers.
 - Run php artisan migrate:fresh --seed to setup the database
 - Access the frontend at http://localhost
-
-https://github.com/AyakaTakahashi/shoe-sales-ec-site/assets/122336381/f44c3812-c25f-4453-8154-78d9ea8ec42c
-
-https://github.com/AyakaTakahashi/shoe-sales-ec-site/assets/122336381/f821b211-5ed0-4062-bb2a-f8c30a2927c2
-
